@@ -143,15 +143,15 @@ export const BONUSES = [
     value: 97,
   },
   {
-    title: 'Weekly Coaching with Roy',
-    subtitle: 'Every Friday, live',
-    desc: 'Bring your questions, your bids, your contracts. Roy answers live — every Friday. For as long as you\'re a member. Record and rewatch anytime.',
+    title: '1 Year of Weekly Coaching with Roy',
+    subtitle: 'Every Friday, live — 52 calls',
+    desc: 'Bring your questions, your bids, your contracts. Roy answers live — every Friday for a full year. Record and rewatch anytime.',
     value: 2400,
   },
   {
     title: 'The Homeowner Community',
-    subtitle: 'You\'re not alone',
-    desc: 'Private members-only community of homeowners going through (or finishing) remodels. Ask questions, compare quotes, share photos, get real-time help.',
+    subtitle: 'As long as you\'re active',
+    desc: 'Private members-only community of homeowners going through (or finishing) remodels. Ask questions, compare quotes, share photos, get real-time help — for as long as you\'re an active member.',
     value: 297,
   },
 ];

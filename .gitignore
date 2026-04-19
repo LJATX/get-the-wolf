@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # claude code local config
 .claude/
+
+# netlify cli state
+.netlify/
