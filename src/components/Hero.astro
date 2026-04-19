@@ -1,0 +1,324 @@
+---
+import { SITE } from '../data/site';
+---
+
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__gradient"></div>
+    <div class="hero__pattern pattern-grid"></div>
+  </div>
+
+  <div class="container-wide hero__container">
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <span class="hero__dot"></span>
+        <span>PROTECTING YOU FROM REMODELING PREDATORS</span>
+      </div>
+
+      <h1 class="hero__headline">
+        Your $100k remodel<br />
+        deserves better than a <span class="hero__highlight">Google search.</span>
+      </h1>
+
+      <p class="hero__subhead">
+        Get the Wolf is the homeowner's remodeling bible — expert-led video lessons,
+        contractor-proof scripts, and weekly live coaching with Roy Faust. Protect your
+        home, your money, and your sanity. All in one place. For one price.
+      </p>
+
+      <div class="hero__cta">
+        <a href={SITE.checkoutUrl} class="btn btn--primary btn--xl">
+          Get All Access — ${SITE.price}
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a href="#curriculum" class="btn btn--secondary-light btn--lg">
+          See What's Inside
+        </a>
+      </div>
+
+      <div class="hero__trust">
+        <div class="hero__trust-item">
+          <strong>50+</strong>
+          <span>Expert video lessons</span>
+        </div>
+        <div class="hero__trust-divider" aria-hidden="true"></div>
+        <div class="hero__trust-item">
+          <strong>Every Friday</strong>
+          <span>Live coaching with Roy</span>
+        </div>
+        <div class="hero__trust-divider" aria-hidden="true"></div>
+        <div class="hero__trust-item">
+          <strong>Lifetime</strong>
+          <span>Access, updates included</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="hero__photo-wrap">
+        <img
+          src="/assets/roy/roy-kitchen-blueprint.jpg"
+          alt="Roy Faust in a renovated kitchen reviewing blueprints"
+          class="hero__photo"
+          width="880"
+          height="1100"
+          loading="eager"
+        />
+        <div class="hero__photo-card">
+          <span class="hero__photo-card-label">MEET YOUR GUIDE</span>
+          <strong>Roy Faust</strong>
+          <span>30+ years in remodeling. Zero hidden agendas.</span>
+        </div>
+      </div>
+
+      <div class="hero__stat-card">
+        <div class="hero__stat-card-kpi">1 in 3</div>
+        <div class="hero__stat-card-desc">
+          homeowners say their remodel went <em>significantly</em> over budget. Don't be one.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 140px 0 clamp(4rem, 8vw, 7rem);
+    background: linear-gradient(135deg, #1C519B 0%, #14407A 40%, #0E2E5B 100%);
+    color: var(--gtw-white);
+    overflow: hidden;
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 20%, rgba(101, 153, 226, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 15% 80%, rgba(252, 104, 54, 0.1) 0%, transparent 50%);
+  }
+  .hero__pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
+  }
+
+  .hero__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gtw-orange);
+    margin-bottom: 1.8rem;
+    padding: 8px 18px 8px 14px;
+    background: rgba(252, 104, 54, 0.1);
+    border: 1px solid rgba(252, 104, 54, 0.3);
+    border-radius: 100px;
+  }
+  .hero__dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gtw-orange);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(1.25); }
+  }
+
+  .hero__headline {
+    color: var(--gtw-white);
+    font-size: clamp(2.4rem, 4.7vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.032em;
+    margin-bottom: 1.4rem;
+  }
+  .hero__highlight {
+    position: relative;
+    white-space: nowrap;
+    color: var(--gtw-orange);
+  }
+  .hero__highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.06em;
+    height: 4px;
+    background: var(--gtw-orange);
+    border-radius: 2px;
+    opacity: 0.4;
+  }
+
+  .hero__subhead {
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__trust {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .hero__trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hero__trust-item strong {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--gtw-white);
+    letter-spacing: -0.01em;
+  }
+  .hero__trust-item span {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.02em;
+  }
+  .hero__trust-divider {
+    width: 1px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .hero__visual {
+    position: relative;
+    z-index: 1;
+  }
+  .hero__photo-wrap {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    transform: rotate(1deg);
+    aspect-ratio: 4 / 5;
+  }
+  .hero__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__photo-card {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    padding: 1.25rem 1.25rem;
+    background: rgba(28, 30, 48, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .hero__photo-card-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--gtw-orange);
+  }
+  .hero__photo-card strong {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    color: var(--gtw-white);
+  }
+  .hero__photo-card span:last-child {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .hero__stat-card {
+    position: absolute;
+    top: 8%;
+    left: -2.4rem;
+    background: var(--gtw-white);
+    color: var(--gtw-dark);
+    padding: 1.2rem 1.25rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 230px;
+    border: 1px solid var(--border-subtle);
+    transform: rotate(-2deg);
+    z-index: 3;
+  }
+  .hero__stat-card-kpi {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 2.1rem;
+    color: var(--gtw-blue);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+  .hero__stat-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 1000px) {
+    .hero__container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .hero__visual {
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero__stat-card {
+      left: -0.5rem;
+      top: 4%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding-top: 110px; }
+    .hero__trust-divider { display: none; }
+    .hero__trust { gap: 1.5rem 2.5rem; }
+    .hero__stat-card { max-width: 200px; padding: 0.9rem 1rem; }
+    .hero__stat-card-kpi { font-size: 1.7rem; }
+  }
+</style>

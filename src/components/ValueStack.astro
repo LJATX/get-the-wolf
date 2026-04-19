@@ -1,0 +1,264 @@
+---
+import { BONUSES, SITE } from '../data/site';
+
+const coreValue = 997;
+const bonusTotal = BONUSES.reduce((sum, b) => sum + b.value, 0);
+const totalValue = coreValue + bonusTotal;
+const formatted = (n: number) => n.toLocaleString('en-US');
+---
+
+<section class="section value-stack">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">HERE'S WHAT'S ACTUALLY INCLUDED</span>
+      <h2>The real value of what you're getting.</h2>
+      <p class="lead">
+        Most courses sell you the videos and vanish. Get the Wolf stacks the course,
+        the templates, the weekly coaching, and a private community of homeowners
+        who've been there. Here's the math.
+      </p>
+    </div>
+
+    <div class="value-stack__frame reveal">
+      <div class="value-stack__header">
+        <div>
+          <h3>The All Access Academy</h3>
+          <p>Everything, all at once. No drip. No tiers to unlock.</p>
+        </div>
+        <span class="chip chip--solid">Best Value</span>
+      </div>
+
+      <div class="value-stack__list">
+        <div class="value-stack__row value-stack__row--core">
+          <div class="value-stack__row-main">
+            <div class="value-stack__row-label">Core</div>
+            <strong>The Complete Video Academy</strong>
+            <p>8 modules. 50+ video lessons. Every phase, every decision, every pitfall.</p>
+          </div>
+          <div class="value-stack__row-value">
+            <span class="value-stack__row-amount">${formatted(coreValue)}</span>
+            <span class="value-stack__row-caption">value</span>
+          </div>
+        </div>
+
+        {BONUSES.map((bonus, i) => (
+          <div class="value-stack__row">
+            <div class="value-stack__row-main">
+              <div class="value-stack__row-label">Bonus {String(i + 1).padStart(2, '0')}</div>
+              <strong>{bonus.title}</strong>
+              <p>{bonus.desc}</p>
+            </div>
+            <div class="value-stack__row-value">
+              <span class="value-stack__row-amount">${formatted(bonus.value)}</span>
+              <span class="value-stack__row-caption">value</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="value-stack__total">
+        <div class="value-stack__total-label">Total real value</div>
+        <div class="value-stack__total-strike">${formatted(totalValue)}</div>
+        <div class="value-stack__total-today">
+          <span>Your price today</span>
+          <strong>${SITE.price}</strong>
+        </div>
+        <a href={SITE.checkoutUrl} class="btn btn--primary btn--xl btn--block">
+          Get Instant Access — ${SITE.price}
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <p class="value-stack__disclaimer">
+          One-time payment. Lifetime access to the library. Community and Friday coaching continue as long as you're active.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .value-stack { background: var(--gtw-white); }
+  .value-stack__frame {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--gtw-white);
+    border-radius: var(--radius-xl);
+    border: 2px solid var(--border-subtle);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .value-stack__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 2rem 2.5rem;
+    background: linear-gradient(135deg, #1C519B 0%, #14407A 100%);
+    color: var(--gtw-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .value-stack__header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+  }
+  .value-stack__header > * { position: relative; }
+  .value-stack__header h3 {
+    font-family: var(--font-head);
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--gtw-white);
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.015em;
+  }
+  .value-stack__header p {
+    color: rgba(255, 255, 255, 0.72);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .value-stack__list {
+    padding: 0.5rem 2.5rem;
+  }
+  .value-stack__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .value-stack__row:last-child { border-bottom: 0; }
+  .value-stack__row--core {
+    background: linear-gradient(90deg, rgba(28, 81, 155, 0.04), transparent);
+    margin: 0 -2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .value-stack__row-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gtw-blue);
+    margin-bottom: 0.4rem;
+  }
+  .value-stack__row--core .value-stack__row-label { color: var(--gtw-orange); }
+  .value-stack__row-main strong {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--gtw-dark);
+    margin-bottom: 0.35rem;
+  }
+  .value-stack__row-main p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .value-stack__row-value {
+    text-align: right;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .value-stack__row-amount {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--gtw-blue);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .value-stack__row-caption {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .value-stack__total {
+    background: linear-gradient(135deg, #FBF5DA 0%, #F6EFC7 100%);
+    padding: 2rem 2.5rem 2.5rem;
+    text-align: center;
+    border-top: 2px dashed var(--border-strong);
+  }
+  .value-stack__total-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+  .value-stack__total-strike {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: inline-block;
+    position: relative;
+  }
+  .value-stack__total-strike::after {
+    content: '';
+    position: absolute;
+    left: -8%;
+    right: -8%;
+    top: 50%;
+    height: 3px;
+    background: var(--gtw-orange);
+    transform: rotate(-6deg);
+  }
+  .value-stack__total-today {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .value-stack__total-today span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gtw-dark);
+  }
+  .value-stack__total-today strong {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: clamp(3.5rem, 7vw, 5rem);
+    color: var(--gtw-orange);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .value-stack__disclaimer {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 1rem 0 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 700px) {
+    .value-stack__header { padding: 1.5rem 1.5rem; }
+    .value-stack__list { padding: 0 1.5rem; }
+    .value-stack__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .value-stack__row-value { align-items: flex-start; flex-direction: row; gap: 0.5rem; align-items: baseline; }
+    .value-stack__row--core { margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .value-stack__total { padding: 1.75rem 1.5rem 2rem; }
+  }
+</style>

@@ -1,0 +1,112 @@
+---
+---
+
+<section class="section newsletter">
+  <div class="container-narrow">
+    <div class="newsletter__card reveal">
+      <div class="newsletter__content">
+        <span class="eyebrow eyebrow--blue">FREE · WEEKLY</span>
+        <h2>The Remodel Intel Briefing.</h2>
+        <p>
+          Every Sunday, one email. A real-world remodel red flag, a material trend worth
+          watching, or a contractor move to be aware of. No fluff. No pitches.
+          Unsubscribe whenever.
+        </p>
+      </div>
+
+      <form class="newsletter__form" action="#" method="post" novalidate>
+        <label for="nl-email" class="sr-only">Your email</label>
+        <input
+          id="nl-email"
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit" class="btn btn--primary">
+          Subscribe
+        </button>
+      </form>
+      <p class="newsletter__disclaimer">
+        We respect your inbox. One email a week, tops. Unsubscribe with one click.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .newsletter { padding-top: 0; padding-bottom: clamp(3rem, 5vw, 5rem); background: var(--gtw-white); }
+  .newsletter__card {
+    background: linear-gradient(135deg, #F7F8FA 0%, #EFF2F8 100%);
+    border-radius: var(--radius-xl);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+  .newsletter__card::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(28, 81, 155, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .newsletter__content {
+    position: relative;
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .newsletter__content h2 {
+    color: var(--gtw-blue);
+    margin-bottom: 0.75rem;
+  }
+  .newsletter__content p {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .newsletter__form {
+    position: relative;
+    display: flex;
+    gap: 0.6rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .newsletter__form input {
+    flex: 1;
+    padding: 16px 18px;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    background: var(--gtw-white);
+    color: var(--gtw-dark);
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+  }
+  .newsletter__form input:focus {
+    outline: none;
+    border-color: var(--gtw-blue);
+    box-shadow: 0 0 0 4px rgba(28, 81, 155, 0.1);
+  }
+  .newsletter__form .btn {
+    padding: 16px 28px;
+  }
+  .newsletter__disclaimer {
+    position: relative;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 560px) {
+    .newsletter__form { flex-direction: column; }
+    .newsletter__form .btn { width: 100%; }
+  }
+</style>

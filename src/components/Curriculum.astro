@@ -1,0 +1,134 @@
+---
+import { CURRICULUM } from '../data/site';
+---
+
+<section class="section curriculum" id="curriculum">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow eyebrow--light">INSIDE THE ACADEMY</span>
+      <h2>8 modules. 50+ lessons.<br />Every phase of your remodel, covered.</h2>
+      <p class="lead">
+        From the first design sketch to the final walkthrough — every single decision you'll face,
+        broken down into bite-sized videos, printable templates, and plain-English guidance.
+      </p>
+    </div>
+
+    <div class="curriculum__grid">
+      {CURRICULUM.map((module) => (
+        <article class="curriculum__card reveal">
+          <div class="curriculum__number">{module.number}</div>
+          <h3>{module.title}</h3>
+          <p>{module.desc}</p>
+          <ul class="curriculum__items">
+            {module.items.map((item) => (
+              <li>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .curriculum {
+    background: linear-gradient(180deg, #1C1E30 0%, #14162A 100%);
+    color: var(--gtw-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .curriculum::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .curriculum .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .curriculum h2 { color: var(--gtw-white); }
+  .curriculum .lead { color: rgba(255, 255, 255, 0.72); }
+
+  .curriculum__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+  .curriculum__card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem;
+    transition: background var(--t-med), border-color var(--t-med), transform var(--t-med);
+    display: flex;
+    flex-direction: column;
+  }
+  .curriculum__card:hover {
+    background: rgba(252, 104, 54, 0.06);
+    border-color: rgba(252, 104, 54, 0.4);
+    transform: translateY(-3px);
+  }
+  .curriculum__number {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--gtw-orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .curriculum__card h3 {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--gtw-white);
+    margin-bottom: 0.7rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .curriculum__card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+  .curriculum__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .curriculum__items li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.4;
+  }
+  .curriculum__items svg {
+    color: var(--gtw-orange);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .curriculum__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .curriculum__grid { grid-template-columns: 1fr; }
+  }
+</style>

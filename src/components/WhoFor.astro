@@ -1,0 +1,132 @@
+---
+---
+
+<section class="section who-for">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">THE HONEST FILTER</span>
+      <h2>Who this is — and isn't — for.</h2>
+      <p class="lead">
+        We'd rather you pass on this than buy and regret it. Here's the no-spin breakdown.
+      </p>
+    </div>
+
+    <div class="who-for__grid">
+      <div class="who-for__card who-for__card--yes reveal">
+        <div class="who-for__card-header">
+          <div class="who-for__icon who-for__icon--yes">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="m5 12 5 5 9-11" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>This IS for you if&hellip;</h3>
+        </div>
+        <ul>
+          <li>You're planning or currently in a <strong>$50k–$750k residential remodel</strong></li>
+          <li>You're a professional who's great at <em>your</em> job — just not this one</li>
+          <li>You'd rather spend 10 hours learning than 200 hours regretting</li>
+          <li>You want a <strong>trusted single source</strong>, not 17 open browser tabs</li>
+          <li>You've been burned before, or watched a friend get burned</li>
+          <li>You want to walk into every contractor meeting as the smartest person in the room</li>
+        </ul>
+      </div>
+
+      <div class="who-for__card who-for__card--no reveal">
+        <div class="who-for__card-header">
+          <div class="who-for__icon who-for__icon--no">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>This is NOT for you if&hellip;</h3>
+        </div>
+        <ul>
+          <li>You're a contractor or industry pro looking for technique content</li>
+          <li>You're doing a DIY flip and need trade-specific how-to</li>
+          <li>You want someone to do the research <em>for</em> you (this is a course, not a service)</li>
+          <li>You think $297 is too much to protect a six-figure investment</li>
+          <li>You have a specific, unique problem that needs 1-on-1 expert time today</li>
+          <li>You're unwilling to watch a few hours of video before your next big decision</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .who-for { background: var(--bg-alt); }
+  .who-for__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .who-for__card {
+    background: var(--gtw-white);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem 2rem;
+    border: 1px solid var(--border-subtle);
+  }
+  .who-for__card--yes { border-top: 4px solid var(--gtw-blue); }
+  .who-for__card--no { border-top: 4px solid var(--gtw-orange); }
+
+  .who-for__card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .who-for__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .who-for__icon--yes { background: rgba(28, 81, 155, 0.1); color: var(--gtw-blue); }
+  .who-for__icon--no { background: rgba(252, 104, 54, 0.1); color: var(--gtw-orange); }
+
+  .who-for__card h3 {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--gtw-dark);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .who-for__card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .who-for__card li {
+    padding-left: 1.8rem;
+    position: relative;
+    font-size: 0.96rem;
+    color: var(--gtw-dark);
+    line-height: 1.55;
+  }
+  .who-for__card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .who-for__card--yes li::before { background: var(--gtw-blue); }
+  .who-for__card--no li::before { background: var(--gtw-orange); }
+  .who-for__card li strong { font-weight: 700; }
+  .who-for__card li em { font-style: italic; }
+
+  @media (max-width: 760px) {
+    .who-for__grid { grid-template-columns: 1fr; }
+  }
+</style>

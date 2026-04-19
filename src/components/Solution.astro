@@ -1,0 +1,219 @@
+---
+---
+
+<section class="section solution" id="how-it-works">
+  <div class="container-wide">
+    <div class="solution__layout">
+      <div class="solution__visual reveal">
+        <div class="solution__visual-main">
+          <img
+            src="/assets/imagery/moodboard.jpg"
+            alt="Designer moodboard with materials, paint chips, and blueprints"
+            loading="lazy"
+          />
+        </div>
+        <div class="solution__visual-accent">
+          <img
+            src="/assets/imagery/blueprint-contract.jpg"
+            alt="Architectural blueprint and services agreement on a desk"
+            loading="lazy"
+          />
+        </div>
+        <div class="solution__badge">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>No fluff. No upsells.</strong>
+            <span>Just the playbook.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution__content reveal">
+        <span class="eyebrow eyebrow--blue">YOUR NEW ADVANTAGE</span>
+        <h2>Everything a pro knows.<br />Finally on your side of the table.</h2>
+        <p class="solution__lead">
+          Most remodel guides are written <em>for contractors</em>, by contractors.
+          Get the Wolf is different. It's the only video course built <em>for you</em> —
+          the homeowner who's about to hand a stranger $100,000 and a key to your house.
+        </p>
+
+        <ul class="solution__list">
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="var(--gtw-blue)" />
+              <path d="m8 12 3 3 5-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>50+ expert video lessons</strong>
+              <span>Built for non-experts. No construction degree required.</span>
+            </div>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="var(--gtw-blue)" />
+              <path d="m8 12 3 3 5-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>Printable scripts, checklists &amp; templates</strong>
+              <span>Take them to meetings. Hand them to your contractor. Use them on day one.</span>
+            </div>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="var(--gtw-blue)" />
+              <path d="m8 12 3 3 5-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>Live coaching with Roy — every Friday</strong>
+              <span>Bring your bids, your contracts, your questions. Get answers on camera.</span>
+            </div>
+          </li>
+          <li>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="var(--gtw-blue)" />
+              <path d="m8 12 3 3 5-6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>Zero hidden agendas</strong>
+              <span>Roy isn't selling you a service. He's selling you the truth. One price. That's it.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4.5rem;
+    align-items: center;
+  }
+
+  .solution__visual {
+    position: relative;
+  }
+  .solution__visual-main {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .solution__visual-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .solution__visual-accent {
+    position: absolute;
+    bottom: -2rem;
+    right: -2.5rem;
+    width: 55%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 8px solid var(--gtw-white);
+  }
+  .solution__visual-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .solution__badge {
+    position: absolute;
+    top: 2rem;
+    left: -2rem;
+    background: var(--gtw-white);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid var(--border-subtle);
+    max-width: 260px;
+  }
+  .solution__badge svg { color: var(--gtw-blue); flex-shrink: 0; }
+  .solution__badge strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--gtw-dark);
+    line-height: 1.2;
+  }
+  .solution__badge span {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .solution__content h2 {
+    margin-bottom: 1.25rem;
+    color: var(--gtw-blue);
+  }
+  .solution__lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+  .solution__lead em {
+    font-style: italic;
+    color: var(--gtw-dark);
+    font-weight: 600;
+  }
+  .solution__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .solution__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+  .solution__list svg { flex-shrink: 0; margin-top: 2px; }
+  .solution__list strong {
+    display: block;
+    font-weight: 700;
+    color: var(--gtw-dark);
+    margin-bottom: 2px;
+    font-size: 1rem;
+  }
+  .solution__list span {
+    color: var(--text-secondary);
+    font-size: 0.93rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1000px) {
+    .solution__layout {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    .solution__visual {
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .solution__visual-accent {
+      right: -1rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .solution__visual-accent { display: none; }
+    .solution__badge {
+      left: -0.25rem;
+      max-width: 220px;
+    }
+  }
+</style>

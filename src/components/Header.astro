@@ -1,0 +1,157 @@
+---
+import { NAV, SITE } from '../data/site';
+---
+
+<header class="site-header">
+  <div class="container-wide site-header__inner">
+    <a href="/" class="site-header__brand" aria-label="Get the Wolf home">
+      <img src="/assets/logos/GTW_LockUp_H-Rev.svg" alt="Get the Wolf" width="180" />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Primary">
+      {NAV.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a href={SITE.checkoutUrl} class="btn btn--primary btn--sm site-header__cta">
+      Get Started — ${SITE.price}
+    </a>
+
+    <button type="button" class="site-header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="site-header__mobile" id="mobile-nav" hidden>
+    <nav class="site-header__mobile-nav" aria-label="Mobile">
+      {NAV.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+      <a href={SITE.checkoutUrl} class="btn btn--primary btn--block" style="margin-top: 0.5rem;">
+        Get Started — ${SITE.price}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 18px 0;
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .site-header__brand {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .site-header__brand img {
+    height: 36px;
+    width: auto;
+  }
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: auto;
+  }
+  .site-header__nav a {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: color 200ms;
+  }
+  .site-header__nav a:hover {
+    color: var(--gtw-white);
+  }
+  .site-header__cta {
+    padding: 12px 22px;
+    font-size: 0.9rem;
+  }
+  .site-header__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+  }
+  .site-header__toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--gtw-white);
+    border-radius: 2px;
+    transition: transform 200ms;
+  }
+  .site-header__mobile {
+    display: none;
+    padding: 1rem 24px 2rem;
+    background: var(--gtw-dark-2);
+  }
+  .site-header__mobile[hidden] { display: none; }
+  .site-header__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: var(--container-wide);
+    margin: 0 auto;
+  }
+  .site-header__mobile-nav a:not(.btn) {
+    color: var(--gtw-white);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 900px) {
+    .site-header__nav,
+    .site-header__cta {
+      display: none;
+    }
+    .site-header__toggle {
+      display: flex;
+    }
+    .site-header__mobile:not([hidden]) {
+      display: block;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const toggle = document.querySelector('.site-header__toggle');
+    const mobile = document.getElementById('mobile-nav');
+    if (!toggle || !mobile) return;
+    toggle.addEventListener('click', () => {
+      const isOpen = !mobile.hasAttribute('hidden');
+      if (isOpen) {
+        mobile.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        mobile.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+    // Close on link click
+    mobile.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        mobile.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>

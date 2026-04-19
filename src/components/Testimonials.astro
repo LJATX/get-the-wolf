@@ -1,0 +1,190 @@
+---
+import { TESTIMONIALS } from '../data/site';
+
+function getInitials(name: string) {
+  return name
+    .split(/\s+/)
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+}
+---
+
+<section class="section testimonials" id="reviews">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">FROM THE MEMBERS</span>
+      <h2>Homeowners. Just like you. Saved thousands.</h2>
+      <p class="lead">
+        Real projects. Real numbers. Real stories from homeowners who stopped guessing
+        and started commanding their own remodels.
+      </p>
+    </div>
+
+    <div class="testimonials__grid">
+      {TESTIMONIALS.map((t) => (
+        <blockquote class="testimonial reveal">
+          <div class="testimonial__stars" aria-label="5 out of 5 stars">
+            {[1,2,3,4,5].map(() => (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="testimonial__quote">&ldquo;{t.quote}&rdquo;</p>
+          <footer class="testimonial__footer">
+            <div class="testimonial__avatar" aria-hidden="true">{getInitials(t.name)}</div>
+            <div class="testimonial__meta">
+              <strong>{t.name}</strong>
+              <span>{t.city}</span>
+              <span class="testimonial__project">{t.project}</span>
+            </div>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+
+    <div class="testimonials__social-proof reveal">
+      <div class="testimonials__sp-stat">
+        <strong>4.9 / 5</strong>
+        <span>Average member rating</span>
+      </div>
+      <div class="testimonials__sp-divider"></div>
+      <div class="testimonials__sp-stat">
+        <strong>$12k</strong>
+        <span>Average saved per member</span>
+      </div>
+      <div class="testimonials__sp-divider"></div>
+      <div class="testimonials__sp-stat">
+        <strong>9 hrs</strong>
+        <span>Avg time to first &ldquo;aha&rdquo; moment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials { background: var(--gtw-white); }
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .testimonial {
+    background: var(--gtw-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    padding: 2rem 1.75rem;
+    margin: 0;
+    transition: transform var(--t-med), box-shadow var(--t-med), border-color var(--t-med);
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--gtw-blue-support);
+  }
+
+  .testimonial__stars {
+    display: flex;
+    gap: 2px;
+    color: var(--gtw-orange);
+    margin-bottom: 1rem;
+  }
+  .testimonial__quote {
+    font-size: 1rem;
+    color: var(--gtw-dark);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+    font-weight: 400;
+  }
+  .testimonial__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .testimonial__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gtw-blue), var(--gtw-blue-deep));
+    color: var(--gtw-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .testimonial__meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .testimonial__meta strong {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--gtw-dark);
+  }
+  .testimonial__meta span {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .testimonial__project {
+    color: var(--gtw-orange) !important;
+    font-weight: 600;
+  }
+
+  .testimonials__social-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--gtw-cream);
+    border-radius: var(--radius);
+    max-width: 760px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .testimonials__sp-stat {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2px;
+  }
+  .testimonials__sp-stat strong {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--gtw-blue);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .testimonials__sp-stat span {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+  .testimonials__sp-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(28, 81, 155, 0.15);
+  }
+
+  @media (max-width: 960px) {
+    .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .testimonials__grid { grid-template-columns: 1fr; }
+    .testimonials__sp-divider { display: none; }
+  }
+</style>
