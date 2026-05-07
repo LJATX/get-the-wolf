@@ -14,7 +14,13 @@
         </p>
       </div>
 
-      <form class="newsletter__form" action="#" method="post" novalidate>
+      <form
+        class="newsletter__form"
+        id="nl-form"
+        action="https://services.leadconnectorhq.com/hooks/wpTQy7qdVH6nVVcMvR8R/8c18c2b6-c3ba-4add-8678-9f398af7b7a7"
+        method="post"
+        novalidate
+      >
         <label for="nl-email" class="sr-only">Your email</label>
         <input
           id="nl-email"
@@ -24,11 +30,11 @@
           required
           autocomplete="email"
         />
-        <button type="submit" class="btn btn--primary">
+        <button type="submit" class="btn btn--primary" id="nl-submit">
           Subscribe
         </button>
       </form>
-      <p class="newsletter__disclaimer">
+      <p class="newsletter__disclaimer" id="nl-status">
         We respect your inbox. One email a week, tops. Unsubscribe with one click.
       </p>
     </div>
@@ -109,4 +115,61 @@
     .newsletter__form { flex-direction: column; }
     .newsletter__form .btn { width: 100%; }
   }
+
+  .newsletter__form.is-submitted { display: none; }
+  .newsletter__success {
+    display: none;
+    text-align: center;
+    color: var(--gtw-blue);
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 1rem 0;
+  }
+  .newsletter__success.is-visible { display: block; }
+  #nl-status.is-error { color: #c0392b; font-weight: 600; }
 </style>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('nl-form');
+    if (!form) return;
+    const status = document.getElementById('nl-status');
+    const submitBtn = document.getElementById('nl-submit');
+    const defaultText = status ? status.textContent : '';
+    const successHtml = "Thanks — you're in. Watch for the next briefing on Sunday.";
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = form.querySelector('#nl-email').value.trim();
+      if (!email) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Subscribing…';
+      status.classList.remove('is-error');
+      status.textContent = defaultText;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'newsletter_form' }),
+        });
+
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        if (typeof gtag === 'function') {
+          gtag('event', 'newsletter_signup', { source: 'newsletter_form' });
+        }
+
+        form.classList.add('is-submitted');
+        status.textContent = successHtml;
+        status.classList.remove('is-error');
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+        status.textContent = "Something went wrong. Try again, or email roy@getthewolf.info.";
+        status.classList.add('is-error');
+      }
+    });
+  })();
+</script>
