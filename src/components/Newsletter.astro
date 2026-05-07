@@ -116,16 +116,6 @@
     .newsletter__form .btn { width: 100%; }
   }
 
-  .newsletter__form.is-submitted { display: none; }
-  .newsletter__success {
-    display: none;
-    text-align: center;
-    color: var(--gtw-blue);
-    font-weight: 600;
-    font-size: 1.05rem;
-    padding: 1rem 0;
-  }
-  .newsletter__success.is-visible { display: block; }
   #nl-status.is-error { color: #c0392b; font-weight: 600; }
 </style>
 
@@ -136,7 +126,6 @@
     const status = document.getElementById('nl-status');
     const submitBtn = document.getElementById('nl-submit');
     const defaultText = status ? status.textContent : '';
-    const successHtml = "Thanks — you're in. Watch for the next briefing on Sunday.";
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -161,9 +150,8 @@
           gtag('event', 'newsletter_signup', { source: 'newsletter_form' });
         }
 
-        form.classList.add('is-submitted');
-        status.textContent = successHtml;
-        status.classList.remove('is-error');
+        // Redirect to branded thank-you page
+        window.location.href = '/newsletter/thank-you/';
       } catch (err) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Subscribe';
